@@ -38,9 +38,8 @@ Class Collections
 	
 	Function Swap:Void(intArray:Int[], index1:Int, index2:Int)
 		Local oldValue1:Int = intArray[index1]
-		Local oldValue2:Int = intArray[index2]	
 		
-		intArray[index1] = oldValue2
+		intArray[index1] = intArray[index2]
 		intArray[index2] = oldValue1	
 	End Function	
 	
