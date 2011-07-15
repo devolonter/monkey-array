@@ -36,7 +36,7 @@ Class Collections
 		Next		
 	End Function
 	
-	Function Swap:Int[](intArray:Int[], index1:Int, index2:Int)
+	Function Swap:Void(intArray:Int[], index1:Int, index2:Int)
 		Local oldValue1:Int = intArray[index1]
 		Local oldValue2:Int = intArray[index2]	
 		
