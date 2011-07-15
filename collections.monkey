@@ -54,11 +54,7 @@ Class Collections
 			result+= item + separator		
 		Next
 		
-		if (separator.Length() > 0)
-			Return result[..result.Length()-1]
-		Else
-			Return result
-		End If
+		Return result[..result.Length()-separator.Length()]
 	End Function
 
 End Class
