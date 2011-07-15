@@ -26,21 +26,25 @@ Class Collections
 		Return newArray
 	End Function
 	
-	Function Reverse:Void(intArray:Int[])
-		Local tmpArray:Int[] = Collections.Copy(intArray)
+	Function Reverse:Int[](intArray:Int[])
+		Local newArray:Int[] = New Int[intArray.Length()]
 		
 		Local i:Int = 0
 		For Local j:Int = intArray.Length()-1 Until -1 Step -1
-			intArray[i] = tmpArray[j]
+			newArray[i] = intArray[j]
 			i+= 1
-		Next		
+		Next
+		
+		Return newArray		
 	End Function
 	
-	Function Swap:Void(intArray:Int[], index1:Int, index2:Int)
-		Local oldValue1:Int = intArray[index1]
+	Function Swap:Int[](intArray:Int[], index1:Int, index2:Int)
+		Local newArray:Int[] = Collections.Copy(intArray)
 		
-		intArray[index1] = intArray[index2]
-		intArray[index2] = oldValue1	
+		newArray[index1] = intArray[index2]
+		newArray[index2] = intArray[index1]	
+		
+		Return newArray
 	End Function	
 	
 	Function Implode:String(intArray:Int[], separator:String)
