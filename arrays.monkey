@@ -15,7 +15,7 @@ Class Arrays
 	End Function
 	
 	Function Merge:Int[](intArray1:Int[], intArray2:Int[])
-		Local newArray:Int[] = Collections.Copy(intArray1, intArray1.Length() + intArray2.Length())
+		Local newArray:Int[] = Arrays.Copy(intArray1, intArray1.Length() + intArray2.Length())
 		
 		Local i:Int = intArray1.Length()
 		For Local item:Int = EachIn intArray2
@@ -39,7 +39,7 @@ Class Arrays
 	End Function
 	
 	Function Swap:Int[](intArray:Int[], index1:Int, index2:Int)
-		Local newArray:Int[] = Collections.Copy(intArray)
+		Local newArray:Int[] = Arrays.Copy(intArray)
 		
 		newArray[index1] = intArray[index2]
 		newArray[index2] = intArray[index1]	
