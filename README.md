@@ -1,6 +1,6 @@
-#Collections module
+#Arrays module
 
-Operation with collections. Copy, merge, reverse, sorting etc.
+Operation with arrays. Copy, merge, reverse, sorting etc.
 
 **Required modules:** none
 
