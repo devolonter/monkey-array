@@ -26,11 +26,40 @@ Class Arrays
 		Return newArray
 	End Function
 	
+	Function Add:Int[](intArray:Int[], value:Int)
+		Local newArray:Int[] = Arrays.Copy(intArray, intArray.Length() + 1)
+		
+		newArray[intArray.Length()] = value
+		Return newArray	
+	End Function
+	
+	Function Insert:Int[](intArray:Int[], index:Int, value:Int)
+		Local newArray:Int[] = Arrays.Copy(intArray[..index], intArray.Length() + 1)
+		
+		newArray[index] = value
+		Local i:Int = index+1
+		For Local item:Int = EachIn intArray[index..]
+			newArray[i] = item
+			i+=1
+		Next
+		Return Arrays.Merge(newArray, intArray[index..])	
+	End Function
+	
+	Function Remove:Int[](intArray:Int[], index:Int)		
+		If (index = 0) Then
+			Return intArray[index+1..intArray.Length()]
+		ElseIf (index = intArray.Length() - 1)
+			Return intArray[0..intArray.Length() - 1]
+		Else
+			Return Arrays.Merge(intArray[..index], intArray[index+1..])
+		End If		
+	End Function
+	
 	Function Reverse:Int[](intArray:Int[])
 		Local newArray:Int[] = New Int[intArray.Length()]
 		
 		Local i:Int = 0
-		For Local j:Int = intArray.Length()-1 Until -1 Step -1
+		For Local j:Int = intArray.Length()-1 To 0 Step -1
 			newArray[i] = intArray[j]
 			i+= 1
 		Next
