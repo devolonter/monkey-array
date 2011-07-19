@@ -34,15 +34,21 @@ Class Arrays
 	End Function
 	
 	Function Insert:Int[](intArray:Int[], index:Int, value:Int)
-		Local newArray:Int[] = Arrays.Copy(intArray[..index], intArray.Length() + 1)
-		
-		newArray[index] = value
-		Local i:Int = index+1
-		For Local item:Int = EachIn intArray[index..]
-			newArray[i] = item
-			i+=1
-		Next
-		Return Arrays.Merge(newArray, intArray[index..])	
+		if (index = -1) Then
+			Return Arrays.Add(intArray, value)
+		ElseIf (index = 0)
+			Return Arrays.Merge([value], intArray)
+		Else
+			Local newArray:Int[] = Arrays.Copy(intArray[0..index+1], intArray.Length() + 1)
+			newArray[index] = value
+			
+			Local i:Int = index+1
+			For Local item:Int = EachIn intArray[index..]
+				newArray[i] = item
+				i+=1
+			Next
+			Return newArray
+		End If
 	End Function
 	
 	Function Remove:Int[](intArray:Int[], index:Int)		
@@ -74,6 +80,36 @@ Class Arrays
 		newArray[index2] = intArray[index1]	
 		
 		Return newArray
+	End Function
+	
+	Function Fill:Void(intArray:Int[], value:Int)
+		For Local i:Int = intArray.Length() - 1 To 0 Step -1
+			intArray[i]	= value
+		Next	
+	End Function
+	
+	Function Clear:Void(intArray:Int[])
+		Arrays.Fill(intArray, 0)	
+	End Function
+	
+	Function Max:Int(intArray:Int[])
+		Local max:Int = 0
+		
+		For Local item:Int = EachIn intArray
+			if (max < item) max = item			
+		Next
+		
+		Return max
+	End Function
+	
+	Function Min:Int(intArray:Int[])
+		Local min:Int = 0
+		
+		For Local item:Int = EachIn intArray
+			if (min > item) min = item			
+		Next
+		
+		Return min
 	End Function	
 	
 	Function Implode:String(intArray:Int[], separator:String)
