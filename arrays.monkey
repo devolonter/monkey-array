@@ -14,6 +14,10 @@ Class Arrays
 		Return newArray				
 	End Function
 	
+	Function CopyRange:Int[](intArray:Int[], start:Int, stop:Int)
+		Return intArray[start..stop]
+	End Function
+	
 	Function Merge:Int[](intArray1:Int[], intArray2:Int[])
 		Local newArray:Int[] = Arrays.Copy(intArray1, intArray1.Length() + intArray2.Length())
 		
@@ -120,6 +124,16 @@ Class Arrays
 		Next
 		
 		Return min
+	End Function
+	
+	Function ToFloat:Float[](intArray:Int[])
+		Local newArray:Float[] = new Float[intArray.Length()]
+		
+		For Local i:Int = intArray.Length()-1 To 0 Step -1
+			newArray[i]	= Float(intArray[i])
+		Next 	
+	
+		Return newArray
 	End Function	
 	
 	Function Implode:String(intArray:Int[], separator:String)
