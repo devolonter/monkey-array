@@ -73,13 +73,11 @@ Class Arrays
 		Return newArray		
 	End Function
 	
-	Function Swap:Int[](intArray:Int[], index1:Int, index2:Int)
-		Local newArray:Int[] = Arrays.Copy(intArray)
-		
-		newArray[index1] = intArray[index2]
-		newArray[index2] = intArray[index1]	
-		
-		Return newArray
+	Function Swap:Void(intArray:Int[], index1:Int, index2:Int)
+		Local oldValue:Int = intArray[index1];	
+			
+		intArray[index1] = intArray[index2]
+		intArray[index2] = oldValue	
 	End Function
 	
 	Function Fill:Void(intArray:Int[], value:Int)
