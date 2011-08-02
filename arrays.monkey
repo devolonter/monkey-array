@@ -80,8 +80,20 @@ Class Arrays
 		intArray[index2] = oldValue	
 	End Function
 	
+	Function Fill:Void(intArray:Int[], start:Int, stop:Int, value:Int)
+		For Local i:Int = start To stop
+			intArray[i]	= value
+		Next
+	End Function
+	
 	Function Fill:Void(intArray:Int[], value:Int)
-		For Local i:Int = intArray.Length() - 1 To 0 Step -1
+		For Local i:Int = intArray.Length()-1 To 0 Step -1
+			intArray[i]	= value
+		Next 	
+	End Function
+	
+	Function Fill:Void(intArray:Int[], start:Int, value:Int)
+		For Local i:Int = intArray.Length()-1 To start Step -1
 			intArray[i]	= value
 		Next	
 	End Function
@@ -92,20 +104,32 @@ Class Arrays
 	
 	Function Max:Int(intArray:Int[])
 		Local max:Int = 0
+		Local isFound:Bool = False
 		
 		For Local item:Int = EachIn intArray
-			if (max < item) max = item			
+			if (max < item) Then
+				max = item
+				isFound = True
+			End If			
 		Next
+		
+		If (Not isFound And intArray.Length() > 1) max = intArray[0]
 		
 		Return max
 	End Function
 	
 	Function Min:Int(intArray:Int[])
 		Local min:Int = 0
+		Local isFound:Bool = False
 		
 		For Local item:Int = EachIn intArray
-			if (min > item) min = item			
+			if (min > item) Then
+				min = item
+				isFound = True
+			End If			
 		Next
+		
+		If (Not isFound And intArray.Length() > 1) min = intArray[0]
 		
 		Return min
 	End Function	
