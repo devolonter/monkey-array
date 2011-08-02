@@ -61,16 +61,14 @@ Class Arrays
 		End If		
 	End Function
 	
-	Function Reverse:Int[](intArray:Int[])
-		Local newArray:Int[] = New Int[intArray.Length()]
+	Function Reverse:Void(intArray:Int[])
+		Local tmpArray:Int[] = Arrays.Copy(intArray)
 		
 		Local i:Int = 0
 		For Local j:Int = intArray.Length()-1 To 0 Step -1
-			newArray[i] = intArray[j]
+			intArray[i] = tmpArray[j]
 			i+= 1
-		Next
-		
-		Return newArray		
+		Next	
 	End Function
 	
 	Function Swap:Void(intArray:Int[], index1:Int, index2:Int)
@@ -104,32 +102,22 @@ Class Arrays
 	
 	Function Max:Int(intArray:Int[])
 		Local max:Int = 0
-		Local isFound:Bool = False
+		If (intArray.Length() > 1) max = intArray[0]
 		
 		For Local item:Int = EachIn intArray
-			if (max < item) Then
-				max = item
-				isFound = True
-			End If			
+			if (max < item) max = item		
 		Next
-		
-		If (Not isFound And intArray.Length() > 1) max = intArray[0]
 		
 		Return max
 	End Function
 	
 	Function Min:Int(intArray:Int[])
 		Local min:Int = 0
-		Local isFound:Bool = False
+		If (intArray.Length() > 1) min = intArray[0]
 		
 		For Local item:Int = EachIn intArray
-			if (min > item) Then
-				min = item
-				isFound = True
-			End If			
+			if (min > item) min = item			
 		Next
-		
-		If (Not isFound And intArray.Length() > 1) min = intArray[0]
 		
 		Return min
 	End Function	
